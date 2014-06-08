@@ -20,5 +20,5 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v4:+'
-    compile files('../../prebuilt-libs/wearable-preview-support.jar')
+    compile files('libs/wearable-preview-support.jar')
 }
