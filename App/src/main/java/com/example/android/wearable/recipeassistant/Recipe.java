@@ -1,13 +1,13 @@
 package com.example.android.wearable.recipeassistant;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,7 @@ public class Recipe {
     public String summaryText;
     public String recipeImage;
     public String ingredientsText;
+    public String videoId;
 
     public static class RecipeStep {
         RecipeStep() { }
@@ -49,6 +50,7 @@ public class Recipe {
         try {
             recipe.titleText = json.getString(Constants.RECIPE_FIELD_TITLE);
             recipe.summaryText = json.getString(Constants.RECIPE_FIELD_SUMMARY);
+            recipe.videoId = json.getString(Constants.RECIPE_FIELD_VIDEO_ID);
             if (json.has(Constants.RECIPE_FIELD_IMAGE)) {
                 recipe.recipeImage = json.getString(Constants.RECIPE_FIELD_IMAGE);
             }

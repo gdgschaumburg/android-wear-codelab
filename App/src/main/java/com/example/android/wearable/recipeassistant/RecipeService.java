@@ -1,13 +1,16 @@
 package com.example.android.wearable.recipeassistant;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.preview.support.v4.app.NotificationManagerCompat;
 import android.preview.support.wearable.notifications.WearableNotifications;
+import android.preview.support.wearable.notifications.WearableNotifications.Action.Builder;
 import android.support.v4.app.NotificationCompat;
 
 import java.util.ArrayList;
@@ -72,7 +75,18 @@ public class RecipeService extends Service {
         builder.setContentText(mRecipe.summaryText);
         builder.setSmallIcon(R.mipmap.ic_notification_recipe);
 
+        String videoId = mRecipe.videoId;
+        Intent videoIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.youtube.com/watch?v=" + videoId));
+        PendingIntent videoPi = PendingIntent.getActivity(this, 0, videoIntent, 0);
+
+        WearableNotifications.Action action = new Builder(
+                R.drawable.youtube,
+                getString(R.string.video_youtube),
+                videoPi).build();
+
         Notification notification = new WearableNotifications.Builder(builder)
+                .addAction(action)
                 .addPages(notificationPages)
                 .build();
         mNotificationManager.notify(Constants.NOTIFICATION_ID, notification);

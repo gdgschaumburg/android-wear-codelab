@@ -16,6 +16,7 @@ public final class Constants {
     public static final String RECIPE_FIELD_TITLE = "title";
     public static final String RECIPE_FIELD_STEP_TEXT = "step_text";
     public static final String RECIPE_FIELD_STEP_IMAGE = "step_image";
+    public static final String RECIPE_FIELD_VIDEO_ID = "video_id";
 
     static final String ACTION_START_COOKING =
             "com.example.android.wearable.recipeassistant.START_COOKING";
